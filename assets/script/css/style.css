@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    background: rgb(245, 236, 224);
+    background: linear-gradient(
+      180deg,
+      rgba(245, 236, 224, 1) 90%,
+      rgba(255, 255, 255, 1) 100%
+    );
+    background-repeat: no-repeat;
+  }
+
+  #container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 700px; /* Set a max-width to prevent the container from becoming too large */
+    aspect-ratio: 1; /* Maintain a square aspect ratio for the container */
+    border: 1px solid #000;
+    /* background-image: url("../../image/11.jpg"); */
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+
+  .piece {
+    width: 12.5%; /* Each piece takes up one-eighth of the container's width */
+    padding-top: 1.0%; /* Set the height based on the width to maintain a square aspect ratio */
+    border: 1px solid #000;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+    background-color: gray;
+    background-size: contain; /* Ensure the background image fully fits within the piece */
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .hidden {
+    visibility: hidden;
+  }
+
+  #scoreboard {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .piece {
+      width: 12.5%; /* On smaller screens, each piece takes up one-eighth of the container's width */
+      padding-top: 12.5%; /* Set the height based on the width to maintain a square aspect ratio */
+    }
+  }
