@@ -96,58 +96,45 @@ function changeBackground() {
 }
 
 // Function to reveal the complete image
+// function revealImage() {
+//   this.classList.add("hidden"); // Hide the clicked piece's background
+//   timeLeft = 15; // Reset the timeLeft variable to 15 seconds
+//   runTimer(document.querySelector(".timerCountDown"));
+// }
 function revealImage() {
-  // const countdownElement = document.getElementById("countdown");
-  // countdownElement.style.display = "block"; // Hide the countdown element
-  this.classList.add("hidden"); // Hide the clicked piece's background
-  resetTimer(); // Reset the timer
+  if (timeLeft <= 0) {
+    this.classList.add("hidden");
+    timeLeft = 15; // Hide the clicked piece's background
+    runTimer(document.querySelector(".timerCountDown"));
+  }
 }
+
+function giveUp() {
+  timeLeft = 0;
+}
+
 function revealAllRE() {
-  // const countdownElement = document.getElementById("countdown");
-  // countdownElement.style.display = "none"; // Hide the countdown element
+  const timerElement = document.querySelector(".timerCountDown");
+  timerElement.classList.remove("timerCountDownEnd"); // Remove the end class if present
+  timeLeft = 0;
+  const timeout = document.getElementById("timeout");
+  const start = document.getElementById("start");
+  start.classList.remove("d-none");
+  timeout.classList.add("d-none");
   pieces.forEach((piece) => {
     piece.classList.remove("hidden");
   });
-  resetTimer(); // Reset the timer
 }
+
 // Function to reveal all pieces
 function revealAll() {
-  // const countdownElement = document.getElementById("countdown");
-  // countdownElement.style.display = "none"; // Hide the countdown element
+  timeLeft = 0;
   pieces.forEach((piece) => {
     piece.classList.add("hidden");
   });
-  resetTimer(); // Reset the timer
 }
 
-// Function to start the countdown timer
-// function startTimer() {
-//   timer = setInterval(updateCountdown, 1000); // Call updateCountdown function every 1 second
-// }
-
-// Function to update the countdown display
-// function updateCountdown() {
-//   document.getElementById(
-//     "countdown"
-//   ).textContent = `เหลือเวลาอีก: ${countdown} วินาที`;
-//   countdown--;
-//   if (countdown < 0) {
-//     clearInterval(timer);
-//     document.getElementById("countdown").textContent = "หมดเวลา!!!";
-//   }
-// }
-
-// Function to reset the countdown timer
-function resetTimer() {
-  console.log("reset");
-  // clearInterval(timer); // Clear the current timer
-  countdown = 15; // Reset countdown value
-  runTimer(countdown); // Run the timer with the new
-  // updateCountdown(); // Update countdown display
-  // startTimer(); // Start a new timer
-}
-
-let timeLeft = 15;
+let timeLeft = 0;
 let timerCountDown = document.getElementById("timeLeft");
 
 function isTimeLeft() {
@@ -155,9 +142,7 @@ function isTimeLeft() {
 }
 
 function runTimer(timerElement) {
-  console.log(timerElement);
   const timerCircle = timerElement.querySelector("svg > circle + circle");
-  console.log("timerCircle", timerCircle);
   timerElement.classList.add("animatable");
   timerCircle.style.strokeDashoffset = 1;
   const start = document.getElementById("start");
@@ -173,8 +158,6 @@ function runTimer(timerElement) {
       unit.classList.remove("d-none");
       const timeRemaining = timeLeft--;
       const normalizedTime = (15 - timeRemaining) / 15;
-      // for clockwise animation
-      // const normalizedTime = (timeRemaining - 60) / 60;
       timerCircle.style.strokeDashoffset = normalizedTime;
       timerCountDown.innerHTML = timeRemaining;
     } else {
@@ -188,9 +171,6 @@ function runTimer(timerElement) {
     }
   }, 1000);
 }
-
-runTimer(document.querySelector(".timerCountDown"));
-
 // Attach click event listener to each piece
 pieces.forEach((piece) => {
   piece.addEventListener("click", revealImage);
