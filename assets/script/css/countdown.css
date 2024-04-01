@@ -1,0 +1,43 @@
+   
+  .timerCountDown > svg {
+      width: 200px;
+      height: 200px;
+  }
+  
+  .timerCountDown > svg > circle {
+      fill: none;
+      stroke-opacity: 0.3;
+      stroke: #ffad3f;
+      stroke-width: 10;
+      transform-origin: center center;
+      transform: rotate(-90deg);
+  }
+
+  .timerCountDownEnd > svg > circle {
+    fill: none;
+    stroke-opacity: 0.3;
+    stroke: #fd0d0d;
+    stroke-width: 10;
+    transform-origin: center center;
+    transform: rotate(-90deg);
+}
+  
+  .timerCountDown > svg > circle + circle {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      stroke-linecap: round;
+      stroke-opacity: 1;
+  }
+  
+  .timerCountDown.animatable > svg > circle + circle {
+      transition: stroke-dashoffset 0.3s ease;
+  }
+  
+  .timerCountDown > svg > text {
+      font-size: 2rem;
+  }
+  
+  .timerCountDown > svg > text + text {
+      font-size: 1rem;
+  }
+  

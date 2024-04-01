@@ -1,4 +1,27 @@
+
+@font-face {
+  font-family: "NotoSansThai";
+  src: url("../../fonts/Noto_Sans_Thai/static/NotoSansThai-Bold.ttf") format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NotoSansThai";
+  src: url("../../fonts/Noto_Sans_Thai/static/NotoSansThai-Medium.ttf") format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NotoSansThai";
+  src: url("../../fonts/Noto_Sans_Thai/static/NotoSansThai-Regular.ttf") format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
+    font-family: "NotoSansThai";
     margin: 0;
     padding: 0;
     display: flex;
@@ -21,7 +44,7 @@ body {
     max-width: 700px; /* Set a max-width to prevent the container from becoming too large */
     aspect-ratio: 1; /* Maintain a square aspect ratio for the container */
     border: 1px solid #000;
-    /* background-image: url("../../image/11.jpg"); */
+    /* background-image: url("../../image/1.jpg"); */
     background-size: 100% 100%;
     background-repeat: no-repeat;
     position: relative;

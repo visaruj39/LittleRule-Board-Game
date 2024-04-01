@@ -4,13 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Image Puzzle Game</title>
-    <link
+    <!-- <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
+    /> -->
+    <link
+      rel="stylesheet"
+      href="../../assets/script/css/bootstarp/bootstrap.min.css"
     />
     <link rel="stylesheet" href="../../assets/script/css/style.css" />
+    <link rel="stylesheet" href="../../assets/script/css/countdown.css" />
   </head>
   <body>
     <div class="container mt-5">
@@ -64,36 +69,77 @@
           </div>
         </div>
         <div class="col-12 col-md-6">
-          <div class="row mt-sm-3 mt-md-5">
-            <div class="col-12">
-              <h1 class="text-center" id="countdown"></h1>
+          <div class="row">
+            <div class="col-6 text-center">
+              <div class="card">
+                <!-- <h1 class="text-center" id="countdown"></h1> -->
+                <div class="timerCountDown animatable">
+                  <svg>
+                    <circle cx="50%" cy="50%" r="90" />
+                    <circle cx="50%" cy="50%" r="90" pathLength="1" />
+                    <text
+                      id="start"
+                      x="100"
+                      y="100"
+                      class="d-none"
+                      text-anchor="middle"
+                    >
+                      <tspan>เริ่มต้น</tspan>
+                    </text>
+                    <text id="second" x="100" y="100" text-anchor="middle">
+                      <tspan style="font-size: 36px" id="timeLeft"></tspan>
+                    </text>
+                    <text
+                      id="timeout"
+                      x="100"
+                      y="105"
+                      class="d-none"
+                      text-anchor="middle"
+                    >
+                      <tspan style="font-size: 24px">หมดเวลา</tspan>
+                    </text>
+                    <text id="unit" x="100" y="120" text-anchor="middle">
+                      วินาที
+                    </text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div id="addPlayerSection" class="card">
+                <div class="container mt-3">
+                  <h4 for="unitName" class="form-label">เพิ่มผู้เเข่งขัน</h4>
+                  <input
+                    type="text"
+                    class="form-control mt-4 mb-2"
+                    id="unitName"
+                    placeholder="กรุณากรอกชื่อของท่าน"
+                  />
+                  <button
+                    class="btn btn-primary mt-3 mb-3"
+                    onclick="addPlayer()"
+                  >
+                    เพิ่มผู้เล่น
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-          <div id="scoreboard" class="container mt-3">
-            <label for="unitName" class="form-label">leader board</label>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Score</th>
-                  <th scope="col">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="leaderboardBody"></tbody>
-            </table>
-          </div>
-          <div id="scoreboard" class="container mt-sm-3 mt-md-5">
-            <label for="unitName" class="form-label">เพิ่มผู้เเข่งขัน</label>
-            <input
-              type="text"
-              class="form-control mb-2"
-              id="unitName"
-              placeholder="กรุณากรอกชื่อของท่าน"
-            />
-            <button class="btn btn-primary mt-3" onclick="addPlayer()">
-              เพิ่มผู้เล่น
-            </button>
+          <div class="card mt-3">
+            <div class="container mt-3">
+              <h4 for="unitName" class="form-label">กระดานคะแนน</h4>
+              <table class="table mt-4">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">ชื่อ</th>
+                    <th scope="col">คะแนน</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody id="leaderboardBody"></tbody>
+              </table>
+            </div>
           </div>
           <div class="mb-3 text-end">
             <button class="btn btn-primary mt-3" onclick="changeBackground()">
@@ -108,11 +154,7 @@
     </div>
 
     <script src="../../assets/script/js/main.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
+    <script src="../../assets/script/js/bootstrap/bootstrap.bundle.min.js"></script>
     <script>
       window.onload = function () {
         changeBackground();
